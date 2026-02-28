@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { PageHeader } from "@/components/dashboard/PageHeader";
+import { Button, Chip, Card, CardBody } from "@heroui/react";
 
 export default async function UsersPage() {
   const session = await getServerSession(authOptions);
@@ -15,43 +17,74 @@ export default async function UsersPage() {
   });
 
   return (
-    <div>
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Users</h1>
-        <Link
-          href={ROUTES.REGISTER}
-          className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
-        >
-          Register user
-        </Link>
-      </div>
-      <p className="mt-1 text-muted-foreground">Employees & admins (Admin only)</p>
-      <div className="mt-6 overflow-x-auto rounded-lg border bg-card">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b bg-muted/50">
-              <th className="px-4 py-3 text-left font-medium">Name</th>
-              <th className="px-4 py-3 text-left font-medium">Email</th>
-              <th className="px-4 py-3 text-left font-medium">Role</th>
-              <th className="px-4 py-3 text-left font-medium">Created</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((u) => (
-              <tr key={u.id} className="border-b last:border-0">
-                <td className="px-4 py-3">{u.name ?? "—"}</td>
-                <td className="px-4 py-3">{u.email}</td>
-                <td className="px-4 py-3">
-                  <span className="rounded bg-muted px-1.5 py-0.5">{u.role}</span>
-                </td>
-                <td className="px-4 py-3 text-muted-foreground">
-                  {new Date(u.createdAt).toLocaleDateString()}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        title="Users"
+        description="Employees & admins (Admin only)"
+        action={
+          <Button
+            as={Link}
+            href={ROUTES.REGISTER}
+            className="bg-primary text-primary-foreground font-medium"
+          >
+            Register user
+          </Button>
+        }
+      />
+
+      <Card className="border border-border/50 shadow-sm">
+        <CardBody className="p-0">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm" aria-label="Users table">
+              <thead>
+                <tr className="border-b border-border/50 bg-muted/30">
+                  <th className="px-4 py-3 text-left font-medium text-foreground">
+                    Name
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-foreground">
+                    Email
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-foreground">
+                    Role
+                  </th>
+                  <th className="px-4 py-3 text-left font-medium text-foreground">
+                    Created
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((u) => (
+                  <tr
+                    key={u.id}
+                    className="border-b border-border/30 last:border-0 transition-colors hover:bg-muted/20"
+                  >
+                    <td className="px-4 py-3 font-medium text-foreground">
+                      {u.name ?? "—"}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">{u.email}</td>
+                    <td className="px-4 py-3">
+                      <Chip
+                        size="sm"
+                        variant="flat"
+                        className={
+                          u.role === "ADMIN"
+                            ? "bg-primary/15 text-primary"
+                            : "bg-muted text-muted-foreground"
+                        }
+                      >
+                        {u.role}
+                      </Chip>
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      {new Date(u.createdAt).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from "lucide-react";
+import { OrgLogo } from "@/components/OrgLogo";
 
 const quickLinks = [
   { label: "Home", href: ROUTES.HOME },
@@ -29,9 +30,10 @@ export function PublicFooter() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* About */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
-              About Us
-            </h3>
+            <Link href={ROUTES.HOME} className="inline-flex items-center gap-2 mb-4">
+              <OrgLogo size={32} className="ring-2 ring-white/20" />
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">About Us</h3>
+            </Link>
             <p className="text-sm text-white/80 leading-relaxed">
               Unida Tech – App development, websites, systems, tracking, hosting & ethical hacking.
               We deliver innovative digital solutions for businesses and institutions.
@@ -109,7 +111,7 @@ export function PublicFooter() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/70">
+          <p className="text-xs text-white/70" suppressHydrationWarning>
             © {new Date().getFullYear()} Unida Tech. All rights reserved.
           </p>
           <div className="flex items-center gap-4">

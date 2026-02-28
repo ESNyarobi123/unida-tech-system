@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { loginSchema } from "@/schemas/auth";
 import { cn } from "@/lib/utils";
+import { OrgLogo } from "@/components/OrgLogo";
 
 function LoginForm() {
   const searchParams = useSearchParams();
@@ -40,10 +41,11 @@ function LoginForm() {
 
   return (
     <div className="rounded-lg border bg-card p-6 shadow-sm">
-      <h1 className="text-2xl font-bold text-center">Staff Login</h1>
-      <p className="mt-1 text-center text-sm text-muted-foreground">
-        Unida Tech
-      </p>
+      <div className="flex flex-col items-center gap-3 mb-2">
+        <OrgLogo size={64} className="ring-2 ring-primary/20" />
+        <h1 className="text-2xl font-bold text-center">Staff Login</h1>
+        <p className="text-center text-sm text-muted-foreground">Unida Tech</p>
+      </div>
       <form onSubmit={onSubmit} className="mt-6 space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium">
@@ -100,7 +102,13 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="rounded-lg border bg-card p-6 text-center text-muted-foreground">Loading…</div>}>
+    <Suspense
+      fallback={
+        <div className="rounded-lg border bg-card p-6 shadow-sm min-h-[320px] flex items-center justify-center">
+          <p className="text-sm text-muted-foreground">Loading…</p>
+        </div>
+      }
+    >
       <LoginForm />
     </Suspense>
   );

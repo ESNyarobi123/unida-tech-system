@@ -1,25 +1,33 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
+import { PageHeader } from "@/components/dashboard/PageHeader";
+import { Card, CardBody, Button } from "@heroui/react";
 
 export default async function TermsPage() {
   const terms = await prisma.termsOfUse.findMany();
 
   return (
-    <div>
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Terms of Use</h1>
-        <Link href={ROUTES.CONTENT} className="text-sm text-primary hover:underline">
-          ← Content
-        </Link>
-      </div>
-      <p className="mt-1 text-muted-foreground">Terms of use pages</p>
-      <div className="mt-6 space-y-4">
+    <div className="space-y-6">
+      <PageHeader
+        title="Terms of Use"
+        description="Terms of use pages"
+        action={
+          <Button as={Link} href={ROUTES.CONTENT} variant="bordered" size="sm">
+            ← Content
+          </Button>
+        }
+      />
+      <div className="space-y-4">
         {terms.map((t) => (
-          <div key={t.id} className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold">{t.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground whitespace-pre-wrap">{t.content}</p>
-          </div>
+          <Card key={t.id} className="border border-border/50 shadow-sm">
+            <CardBody className="p-5">
+              <h3 className="font-semibold text-foreground">{t.title}</h3>
+              <p className="mt-2 whitespace-pre-wrap text-sm text-muted-foreground">
+                {t.content}
+              </p>
+            </CardBody>
+          </Card>
         ))}
       </div>
     </div>

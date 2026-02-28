@@ -1,8 +1,22 @@
+import { PageHeader } from "@/components/dashboard/PageHeader";
+import { Card, CardBody } from "@heroui/react";
+import { FileText } from "lucide-react";
+
 export default function InvoicesPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Invoices</h1>
-      <p className="mt-1 text-muted-foreground">Billing invoices (placeholder)</p>
+    <div className="space-y-6">
+      <PageHeader
+        title="Invoices"
+        description="Billing invoices (placeholder)"
+      />
+      <Card className="border border-border/50 shadow-sm">
+        <CardBody className="flex flex-col items-center justify-center gap-3 py-16 text-center">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+            <FileText className="h-7 w-7 text-primary" />
+          </div>
+          <p className="text-muted-foreground">Invoices list coming soon.</p>
+        </CardBody>
+      </Card>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { ROUTES } from "@/constants/routes";
 import { Button } from "@heroui/react";
 import { Menu, Phone, Mail, X } from "lucide-react";
 import { useState } from "react";
+import { OrgLogo } from "@/components/OrgLogo";
 
 const mainNav = [
   { label: "Home", href: ROUTES.HOME },
@@ -55,9 +56,10 @@ export function PublicHeader() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link
             href={ROUTES.HOME}
-            className="text-xl font-bold tracking-tight text-white hover:text-unida-accent-light transition-colors"
+            className="flex items-center gap-3 text-xl font-bold tracking-tight text-white hover:text-unida-accent-light transition-colors"
           >
-            Unida Tech
+            <OrgLogo size={40} circle className="ring-2 ring-white/20" />
+            <span>Unida Tech</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/95">

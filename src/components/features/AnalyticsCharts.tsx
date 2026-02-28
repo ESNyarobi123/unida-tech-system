@@ -13,6 +13,7 @@ import {
   Cell,
   Legend,
 } from "recharts";
+import { Card, CardBody } from "@heroui/react";
 
 const monthlyData = [
   { month: "Jan", visits: 4000, revenue: 2400 },
@@ -32,9 +33,10 @@ const statusData = [
 export function AnalyticsCharts() {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-xl border bg-card p-4 shadow-sm">
-        <h3 className="mb-4 font-semibold">Visits & revenue</h3>
-        <div className="h-[280px]">
+      <Card className="border border-border/50 shadow-sm">
+        <CardBody className="p-5">
+          <h3 className="mb-4 font-semibold text-foreground">Visits & revenue</h3>
+          <div className="h-[280px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={monthlyData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
@@ -51,11 +53,13 @@ export function AnalyticsCharts() {
               <Line type="monotone" dataKey="revenue" stroke="hsl(var(--chart-2))" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
-        </div>
-      </div>
-      <div className="rounded-xl border bg-card p-4 shadow-sm">
-        <h3 className="mb-4 font-semibold">Invoices by status</h3>
-        <div className="h-[280px]">
+          </div>
+        </CardBody>
+      </Card>
+      <Card className="border border-border/50 shadow-sm">
+        <CardBody className="p-5">
+          <h3 className="mb-4 font-semibold text-foreground">Invoices by status</h3>
+          <div className="h-[280px]">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -77,8 +81,9 @@ export function AnalyticsCharts() {
               <Legend />
             </PieChart>
           </ResponsiveContainer>
-        </div>
-      </div>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 }
