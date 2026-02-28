@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Unida Tech brand: blue + purple, modern dark/light */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 224 71% 4%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 230 100% 97%;
+    --accent-foreground: 262 83% 58%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83% 58%;
+    --radius: 0.5rem;
+    --chart-1: 262 83% 58%;
+    --chart-2: 221 83% 53%;
+    --chart-3: 280 65% 60%;
+  }
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 7%;
+    --card-foreground: 210 40% 98%;
+    --primary: 263 70% 65%;
+    --primary-foreground: 224 71% 4%;
+    --secondary: 224 30% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 224 30% 14%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 262 40% 20%;
+    --accent-foreground: 263 70% 75%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 224 30% 18%;
+    --input: 224 30% 18%;
+    --ring: 263 70% 65%;
+    --chart-1: 263 70% 65%;
+    --chart-2: 221 83% 53%;
+    --chart-3: 280 65% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
