@@ -6,6 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/react/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -18,6 +19,8 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          dark: "hsl(var(--unida-primary-dark))",
+          main: "hsl(var(--unida-primary-main))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -34,10 +37,26 @@ const config: Config = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          light: "hsl(var(--unida-accent-light))",
         },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        /* Unida Tech official palette – direct utility classes */
+        unida: {
+          primary: "#0A2540",
+          "primary-dark": "#051B2E",
+          "primary-main": "#1E40AF",
+          accent: "#2563EB",
+          "accent-light": "#60A5FA",
+          "bg-light": "#F8FAFC",
+          white: "#FFFFFF",
+          "text-dark": "#0F172A",
+          "text-muted": "#64748B",
+          success: "#10B981",
+          danger: "#EF4444",
+          warning: "#F59E0B",
         },
       },
       borderRadius: {

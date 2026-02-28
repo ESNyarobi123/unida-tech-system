@@ -3,6 +3,7 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
+import { Button } from "@heroui/react";
 
 export function DashboardHeader() {
   const { data: session } = useSession();
@@ -16,25 +17,23 @@ export function DashboardHeader() {
           {session?.user?.role}
         </span>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         {isAdmin && (
-          <Link
-            href={ROUTES.REGISTER}
-            className="text-sm text-primary hover:underline"
-          >
+          <Button as={Link} href={ROUTES.REGISTER} size="sm" variant="light" color="primary">
             Register user
-          </Link>
+          </Button>
         )}
-        <Link href={ROUTES.HOME} className="text-sm text-muted-foreground hover:text-foreground">
+        <Button as={Link} href={ROUTES.HOME} size="sm" variant="light">
           Public site
-        </Link>
-        <button
-          type="button"
-          onClick={() => signOut({ callbackUrl: ROUTES.HOME })}
-          className="text-sm text-muted-foreground hover:text-foreground"
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          color="danger"
+          onPress={() => signOut({ callbackUrl: ROUTES.HOME })}
         >
           Sign out
-        </button>
+        </Button>
       </div>
     </header>
   );

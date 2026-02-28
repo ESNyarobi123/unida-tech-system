@@ -2,52 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================================================
+   Unida Tech Official Color Palette (hex reference)
+   primary:       #0A2540  Deep Navy Blue (header)
+   primary-dark:  #051B2E
+   primary-main:  #1E40AF
+   accent:        #2563EB
+   accent-light:  #60A5FA
+   bg-light:      #F8FAFC
+   white:         #FFFFFF
+   text-dark:     #0F172A
+   text-muted:    #64748B
+   success:       #10B981
+   danger:        #EF4444
+   warning:       #F59E0B
+   ============================================================================= */
+
 @layer base {
-  /* Unida Tech brand: blue + purple, modern dark/light */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71% 4%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 100%;
+    /* Unida Tech brand palette (HSL for theme) */
+    --unida-primary: 211 74% 14%;           /* #0A2540 Deep Navy */
+    --unida-primary-dark: 208 81% 10%;      /* #051B2E */
+    --unida-primary-main: 221 70% 40%;       /* #1E40AF */
+    --unida-accent: 221 83% 53%;            /* #2563EB */
+    --unida-accent-light: 213 93% 68%;      /* #60A5FA */
+    --unida-bg-light: 210 40% 98%;          /* #F8FAFC */
+    --unida-white: 0 0% 100%;               /* #FFFFFF */
+    --unida-text-dark: 222 47% 11%;         /* #0F172A */
+    --unida-text-muted: 215 16% 47%;        /* #64748B */
+    --unida-success: 160 84% 39%;           /* #10B981 */
+    --unida-danger: 0 84% 60%;               /* #EF4444 */
+    --unida-warning: 38 92% 50%;            /* #F59E0B */
+
+    --background: var(--unida-white);
+    --foreground: var(--unida-text-dark);
+    --card: var(--unida-white);
+    --card-foreground: var(--unida-text-dark);
+    --primary: var(--unida-primary);
+    --primary-foreground: var(--unida-white);
     --secondary: 220 14% 96%;
-    --secondary-foreground: 224 71% 4%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 230 100% 97%;
-    --accent-foreground: 262 83% 58%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --secondary-foreground: var(--unida-text-dark);
+    --muted: var(--unida-bg-light);
+    --muted-foreground: var(--unida-text-muted);
+    --accent: 213 93% 97%;                  /* very light blue tint */
+    --accent-foreground: var(--unida-accent);
+    --destructive: var(--unida-danger);
+    --destructive-foreground: var(--unida-white);
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 262 83% 58%;
+    --ring: var(--unida-accent);
     --radius: 0.5rem;
-    --chart-1: 262 83% 58%;
-    --chart-2: 221 83% 53%;
-    --chart-3: 280 65% 60%;
+    --chart-1: var(--unida-accent);
+    --chart-2: var(--unida-primary-main);
+    --chart-3: var(--unida-accent-light);
   }
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
-    --card: 224 71% 7%;
-    --card-foreground: 210 40% 98%;
-    --primary: 263 70% 65%;
-    --primary-foreground: 224 71% 4%;
-    --secondary: 224 30% 14%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 224 30% 14%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 262 40% 20%;
-    --accent-foreground: 263 70% 75%;
+    --background: var(--unida-primary-dark);
+    --foreground: var(--unida-bg-light);
+    --card: 211 74% 12%;
+    --card-foreground: var(--unida-bg-light);
+    --primary: var(--unida-accent-light);
+    --primary-foreground: var(--unida-primary-dark);
+    --secondary: 211 50% 18%;
+    --secondary-foreground: var(--unida-bg-light);
+    --muted: 211 50% 18%;
+    --muted-foreground: var(--unida-text-muted);
+    --accent: 221 70% 35%;
+    --accent-foreground: var(--unida-accent-light);
     --destructive: 0 62% 50%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 224 30% 18%;
-    --input: 224 30% 18%;
-    --ring: 263 70% 65%;
-    --chart-1: 263 70% 65%;
-    --chart-2: 221 83% 53%;
-    --chart-3: 280 65% 60%;
+    --destructive-foreground: var(--unida-bg-light);
+    --border: 211 40% 22%;
+    --input: 211 40% 22%;
+    --ring: var(--unida-accent-light);
+    --chart-1: var(--unida-accent-light);
+    --chart-2: var(--unida-accent);
+    --chart-3: var(--unida-primary-main);
   }
 }
 

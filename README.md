@@ -8,8 +8,8 @@ Built to match **md/system.md** and **md/folder structure.md**.
 ## Tech stack
 
 - **Next.js 14** App Router + TypeScript
-- **Tailwind CSS** + shadcn/ui-style + Radix UI + Lucide Icons
-- **Prisma** + **SQLite for dev** (PostgreSQL for production – change provider in schema)
+- **Tailwind CSS** + **Hero UI** (components: Button, Card, etc.) + Radix UI + Lucide Icons
+- **Prisma** + **MySQL**
 - **tRPC** (type-safe API)
 - **NextAuth v4** with Credentials + **Prisma (Database) adapter**
 - **Zod** + **React Hook Form** + **TanStack Table** + **Recharts**
@@ -27,7 +27,7 @@ Built to match **md/system.md** and **md/folder structure.md**.
 
 ```bash
 cp .env.example .env.local
-# .env: DATABASE_URL="file:./prisma/dev.db" for SQLite dev
+# .env: DATABASE_URL="mysql://user:password@localhost:3306/unida_tech"
 
 npm install
 npm run db:push
@@ -49,6 +49,20 @@ npm run dev
 - **Asset Management** (assign to employees)
 - **Analytics** (Recharts), **Maintenance** (admin), **Audit logs** (schema ready)
 - **Theme:** Unida Tech **blue/purple** brand, dark/light
+
+## Database (MySQL)
+
+- **Prisma (recommended):** Create the DB in MySQL, set `DATABASE_URL` in `.env`, then:
+  ```bash
+  npm run db:push
+  npm run db:seed
+  ```
+- **Raw SQL:** Create database and user in MySQL, then load schema:
+  ```bash
+  mysql -u user -p -e "CREATE DATABASE IF NOT EXISTS unida_tech CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  mysql -u user -p unida_tech < prisma/schema-mysql.sql
+  ```
+  Then run `npm run db:seed` for initial data. SQLite version (legacy): `prisma/schema.sql`.
 
 ## Scripts
 

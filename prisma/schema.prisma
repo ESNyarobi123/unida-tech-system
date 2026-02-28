@@ -1,5 +1,5 @@
 // Unida Tech System - Prisma Schema
-// SQLite for dev (per system.md); use PostgreSQL in production by changing provider + url
+// MySQL (use schema-mysql.sql for manual create, or db:push with DATABASE_URL)
 // Roles: VISITOR, EMPLOYEE, ADMIN
 
 generator client {
@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
